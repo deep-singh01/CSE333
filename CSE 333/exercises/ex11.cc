@@ -18,9 +18,13 @@
 
 using namespace std;
 
+// number of input values
+const int kNumInputs = 6;
+
 // reads input from the user
 // throws an error if the input is not a double
-template <class T> T ReadValue(istream& in);
+template <typename T>
+T ReadValue(istream& in);
 
 /* main - runs program described
 *
@@ -30,7 +34,7 @@ template <class T> T ReadValue(istream& in);
 *             array containing pointers to the arguments as strings
 */
 int main(int argc, char** argv) {
-  // user inputted correct number of arguments
+  // user inputted incorrect number of arguments
   if (argc != 1) {
     printf("Invalid Argument: Too Many or Too Few Arguments\n");
     return EXIT_FAILURE;
@@ -39,8 +43,8 @@ int main(int argc, char** argv) {
   vector<double> v;
 
   // read 6 doubles from user
-  printf("Enter 6 doubles:\n");
-  for (i = 0; i < 6; i++) {
+  cout << "Enter " << kNumInputs << " doubles:" << endl;
+  for (i = 0; i < kNumInputs; i++) {
     v.push_back(ReadValue<double>(cin));
   }
 
@@ -52,16 +56,16 @@ int main(int argc, char** argv) {
   for (auto number : v) {
     cout << number << "\n";
   }
+
+  return EXIT_SUCCESS;
 }
 
 template <class T> T ReadValue(istream& in) {
-  T val;
-  in >> val;
-  if (in) {
-    return val;
-  } else {
-    in.clear();
-    printf("Error: Invalid Input - not a double\n");
+  T next;
+  in >> next;
+  if (!in.good()) {
+    cerr << "Couldn't handle input; conversion error or EOF." << endl;
     exit(EXIT_FAILURE);
   }
+  return next;
 }
