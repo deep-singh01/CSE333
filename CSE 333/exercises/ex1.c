@@ -11,9 +11,13 @@
 
 #include <stdio.h>    // printf
 #include <stdlib.h>   // EXIT_SUCCESS or EXIT_FAILURE
+#include <stdint.h>   // int64_t
 #include <string.h>   // strlen
 #include <stdbool.h>  // bool
 #include <ctype.h>    // isdigit
+
+// Size of data arrays
+#define ARRAY_SIZE 12
 
 void CopyAndSort(__int64_t src[], __int64_t dst[], int size);
 
@@ -28,18 +32,17 @@ void CopyAndSort(__int64_t src[], __int64_t dst[], int size);
 //
 int main(int argc, char* argv[]) {
     int i;
-    __int64_t dst[12];
-    __int64_t src[12] = {3, 2, -5, 7, 17, 42, 6, 333, 7, 8, -8, 6};
-    int size = 12;
+    int64_t dst[ARRAY_SIZE];
+    int64_t src[ARRAY_SIZE] = {3, 2, -5, 7, 17, 42, 6, 333, 7, 8, -8, 6};
 
-    CopyAndSort(src, dst, size);
+    CopyAndSort(src, dst, ARRAY_SIZE);
 
     // printing numbers
-    for (i = 0; i < size-1; i++) {
+    for (i = 0; i < ARRAY_SIZE-2; i++) {
         printf("%ld ", dst[i]);
     }
 
-    printf("%ld\n", dst[size-1]);
+    printf("%ld\n", dst[ARRAY_SIZE-1]);
 }
 
 //
