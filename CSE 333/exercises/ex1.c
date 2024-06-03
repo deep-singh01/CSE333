@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     CopyAndSort(src, dst, ARRAY_SIZE);
 
     // printing numbers
-    for (i = 0; i < ARRAY_SIZE-2; i++) {
+    for (i = 0; i < ARRAY_SIZE-1; i++) {
         printf("%ld ", dst[i]);
     }
 
