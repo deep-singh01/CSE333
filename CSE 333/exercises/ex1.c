@@ -19,7 +19,7 @@
 // Size of data arrays
 #define ARRAY_SIZE 12
 
-void CopyAndSort(__int64_t src[], __int64_t dst[], int size);
+void CopyAndSort(int64_t src[], int64_t dst[], int size);
 
 //
 // main - runs program described
